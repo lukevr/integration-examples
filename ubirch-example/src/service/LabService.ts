@@ -6,6 +6,8 @@ import { WebhookCredentialsIssuedDTO } from '../dto/WebhookCredentialsIssuedDTO'
 import { TestWaiterModel } from '../model/TestWaiterModel';
 import { DateUtil } from '../util/DateUtil';
 import { ConfigService } from "./ConfigService";
+import { Hasher } from './Hasher';
+import { UbirchConnectService } from './UbirchConnectService';
 
 
 @Singleton
@@ -14,6 +16,14 @@ export class LabService {
 
     @Inject
     private configService: ConfigService;
+
+    @Inject
+    private hasher: Hasher;
+
+    @Inject
+    private ubirchConnect: UbirchConnectService;
+
+    
 
     // in real life we shpuld have something like queue
     public performTest(testId: string): void {
@@ -50,7 +60,14 @@ export class LabService {
             };
         });
 
-        // TODO: send hash to Ubirch ???
+        const hash = this.hasher.makeHash(fields);
+
+        const anchored = await this.ubirchConnect.anchorHash(hash);
+        if (!anchored.ok) {
+            console.log("Can't anchore result: "+anchored.errorMessage);
+            throw new Error("Cab't anchor hash:"+anchored.errorMessage);
+        }
+
         //  or it shuld be  a testlab
 
         const body: WebhookCredentialsIssuedDTO  = { 
