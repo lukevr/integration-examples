@@ -7,9 +7,14 @@
   "testResultSchemaId": "GzufYXT7rNEe6Xcbc4Nfcp:2:Covid 19 Test Result:1.1",
 
   "ubirchBaseUrl" : "https://verify.demo.ubirch.com/api",
+  "ubirchLocalUrl" : "http://127.0.0.1:8080",
+
+  "ubirchUUID-absent":  "insert-uuid-here",
+  "ubirchToken-absent":  "insert-token-here",
 
   "myPrivateKeyFile": "keys/proxy-private-key.pem",
-  "zakaPublicKey": "keys/zaka-public-key.pem"
+  "zakaPublicKeyFile": "keys/zaka-public-key.pem",
+  "hashPublic": "keys/hashKey"
 
 
 }

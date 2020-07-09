@@ -16,6 +16,7 @@ export interface AppConfig {
     testResultCredentialId: string;
 
     ubirchBaseUrl: string; 
+    ubirchLocalUrl: string;
     ubirchUUID: string;
     ubirchToken: string;
 
