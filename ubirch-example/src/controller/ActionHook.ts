@@ -1,5 +1,6 @@
 import { Inject } from 'typescript-ioc';
 import { BodyOptions, BodyType, Errors, ParserType, Path,  POST  } from "typescript-rest";
+import { v1 as uuidv1 } from 'uuid';
 import { Constants } from '../config/Constants';
 import { WebhookActionEventDTO } from "../dto/WebhookActionEventDTO";
 import { WebhookActionEventReplyDTO } from "../dto/WebhookActionEventReplyDTO";
@@ -30,10 +31,7 @@ export class ActionHook {
 
         const credentialsMap = new Map<string,string>();
         for (const cred of data.receivedCredentials) {
-            if (cred.credentialId === config.userProfileCredentialId
-                ||
-                cred.credentialId === config.testIdCredentialId
-                ) {
+            if (cred.credentialId === config.userProfileCredentialId) {
                 for(const field of cred.fields) {
                     credentialsMap.set(field.name,field.value);
                 }
@@ -53,12 +51,9 @@ export class ActionHook {
         if (phoneNumber === undefined || phoneNumber === null) {
             this.badRequest("phone is not set in request");
         }
-    
-        const testId = credentialsMap.get(Constants.TEST_ID);
-        if (testId === undefined || testId === null) {
-            this.badRequest("testId is not set in request");
-        }
 
+        const testId = uuidv1();
+    
         let waiter = await TestWaiterModel.findByTestId(testId);
         if (waiter === null || waiter === undefined) {
             waiter = await TestWaiterModel.createRecord({
@@ -75,7 +70,17 @@ export class ActionHook {
            serviceDid: data.publicServiceDid,
            subscriberConnectDid: data.subscriberConnectDid,
            actionEventId: data.actionEventId,
-           issuedCredentials: [],
+           issuedCredentials: [{
+               credentialId: config.testIdCredentialId,
+               schemaId: config.testIdSchemaId,
+               fields: [
+                   { name: Constants.TEST_ID, value: testId },
+                   { name: Constants.VALID_TILL, 
+                     value: DateUtil.plusDays(new Date(),30).toUTCString()  }
+               ],
+               utcIssuedAt: DateUtil.utcNow(),
+               revoked: false
+           }],
            revokedCredentials: []
        };
 

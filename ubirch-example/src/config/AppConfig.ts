@@ -30,8 +30,6 @@ export interface AppConfig {
     myPrivateKeyFile: string;
     myPrivateKey: crypto.KeyObject;
 
-    hashPrivateKeyFile: string;
-    hashPrivateKey: crypto.KeyObject;
 
 }
 
@@ -53,10 +51,6 @@ export class AppConfigHelper {
         }
         const zakaPem = fs.readFileSync(zakaPublicKeyFile);
         json.zakaPublicKey = crypto.createPublicKey({ key: zakaPem });
-        const hashPrivateKeyFile = json.hashPrivateKeyFile;
-        if (hashPrivateKeyFile === undefined || hashPrivateKeyFile === null) {
-            throw new Error("hashPrivateKeyFile is not set in appConfig");
-        }
         // TODO: insert checks
         return json;
     }

@@ -31,6 +31,7 @@
     "mustache": "^4.0.1",
     "typescript-ioc": "^1.2.5",
     "typescript-rest": "^2.2.2",
+    "uuid": "^8.2.0",
     "uuidv4": "^6.1.1"
   },
   "disabled-dependencies": {},
@@ -43,6 +44,7 @@
     "@types/hjson": "^2.4.1",
     "@types/morgan": "^1.9.0",
     "@types/node": "^12.0.10",
+    "@types/uuid": "^8.0.0",
     "chai": "4.2.0",
     "cross-env": "5.2.0",
     "mocha": "6.1.4",
