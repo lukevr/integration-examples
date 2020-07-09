@@ -1,0 +1,15 @@
+{
+
+  "testIdCredentialId": "GzufYXT7rNEe6Xcbc4Nfcp:3:CL:60:tag",
+  "testIdSchemaId": "GzufYXT7rNEe6Xcbc4Nfcp:2:Test ID:1.0",
+
+  "testResultCredentialId": "GzufYXT7rNEe6Xcbc4Nfcp:3:CL:64:tag",
+  "testResultSchemaId": "GzufYXT7rNEe6Xcbc4Nfcp:2:Covid 19 Test Result:1.1",
+
+  "ubirchBaseUrl" : "https://verify.demo.ubirch.com/api",
+
+  "myPrivateKeyFile": "keys/proxy-private-key.pem",
+  "zakaPublicKey": "keys/zaka-public-key.pem"
+
+
+}

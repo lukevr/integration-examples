@@ -1,0 +1,12 @@
+{
+  "swagger": {
+    "outputDirectory": "./dist",
+    "entryFile": "./src/index.ts",
+    "name": "Zaka profile",
+    "description": "Zaka indy backend",
+    "license": "MIT",
+    "produces": ["application/json"],
+    "version": "0.0.1",
+    "basePath": "/ubirch-proxy"
+  }
+}
