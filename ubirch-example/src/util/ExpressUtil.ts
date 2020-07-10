@@ -27,7 +27,7 @@ export function checkSignature(req: express.Request, resp: express.Response, buf
 
 export function signatureChecker(req: express.Request, resp: express.Response, buff: Buffer, encoding: String) {
     const cfg: ConfigService = Container.get(ConfigService);
-    const key = cfg.config().zakaPublicKey;
+    const key = cfg.config().zakaContainerPublicKey;
     checkSignature(req,resp,buff,key);
 }
 
