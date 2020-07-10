@@ -75,8 +75,8 @@ export class LabService {
             serviceDid: config.testServiceDid,
             subscriberConnectDid: testWaiter.did,
             credentials: [{
-               credentialId: config.testIdCredentialId,
-               schemaId: config.testIdSchemaId,
+               credentialId: config.testResultCredentialId,
+               schemaId: config.testResultSchemaId,
                fields: fields,
                utcIssuedAt: DateUtil.utcNow(),
                revoked: false
