@@ -40,7 +40,7 @@ export class ApiServer {
      * @returns {Promise<any>}
      */
     public start(): Promise<any> {
-        const appConfig = AppConfigHelper.read("appConfig");
+        const appConfig = AppConfigHelper.read("appConfig.json");
         const configService = Container.get(ConfigService);
         const mongoConnectors: MongoConnector = Container.get(MongoConnector);
         configService.init(appConfig);
