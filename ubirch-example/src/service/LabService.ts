@@ -2,6 +2,7 @@ import axios from 'axios';
 import * as crypto from 'crypto';
 import { Inject, Singleton } from "typescript-ioc";
 import { Errors } from 'typescript-rest';
+import { v1 as uuidv1 } from 'uuid';
 import { WebhookCredentialsIssuedDTO } from '../dto/WebhookCredentialsIssuedDTO';
 import { TestWaiterModel } from '../model/TestWaiterModel';
 import { DateUtil } from '../util/DateUtil';
@@ -47,9 +48,9 @@ export class LabService {
           "First name" : testWaiter.firstName,
           "Last name" : testWaiter.lastName,
           "Date of birth": "",
-          "Test type" : "fake",
+          "Test type" : "fake: "+ testId+":"+uuidv1(),
           "Test result" : "1",
-          "Valid till" : "",
+          "Valid till" : "" + DateUtil.plusDays(new Date(), 30).toString,
           "Risk level" : "low"      
         };
 
