@@ -50,7 +50,7 @@ export class LabService {
           "Date of birth": "",
           "Test type" : "fake: "+ testId+":"+uuidv1(),
           "Test result" : "1",
-          "Valid till" : "" + DateUtil.plusDays(new Date(), 30).toString,
+          "Valid till" : "" + DateUtil.plusDays(new Date(), 30).toString(),
           "Risk level" : "low"      
         };
 
