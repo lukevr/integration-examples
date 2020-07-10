@@ -23,9 +23,9 @@ export interface AppConfig {
     mongodbUri: string;
     debugMongoConnection: boolean;
 
-    zakaUrl: string;
-    zakaPublicKeyFile: string;
-    zakaPublicKey: crypto.KeyObject;
+    zakaContainerUrl: string;
+    zakaContainerPublicKeyFile: string;
+    zakaContainerPublicKey: crypto.KeyObject;
 
     myPrivateKeyFile: string;
     myPrivateKey: crypto.KeyObject;
@@ -45,11 +45,11 @@ export class AppConfigHelper {
         }
         const signingPem = fs.readFileSync(myPrivateKeyFile);
         json.myPrivateKey = crypto.createPrivateKey({ key: signingPem });
-        const zakaPublicKeyFile = json.zakaPublicKeyFile;
-        if (zakaPublicKeyFile === undefined || zakaPublicKeyFile === null) {
-            throw new Error("zalaPublicKeyFile is not set in appConfig");
+        const zakaContainerPublicKeyFile = json.zakaContainerPublicKeyFile;
+        if (zakaContainerPublicKeyFile === undefined || zakaContainerPublicKeyFile === null) {
+            throw new Error("zakaContainerPublicKeyFile is not set in appConfig");
         }
-        const zakaPem = fs.readFileSync(zakaPublicKeyFile);
+        const zakaPem = fs.readFileSync(zakaContainerPublicKeyFile);
         json.zakaPublicKey = crypto.createPublicKey({ key: zakaPem });
         // TODO: insert checks
         return json;
