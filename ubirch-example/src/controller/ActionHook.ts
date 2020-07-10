@@ -39,17 +39,17 @@ export class ActionHook {
 
         }
 
-        const firstName = credentialsMap.get("firstName");
+        const firstName = credentialsMap.get(Constants.FIRST_NAME);
         if (firstName === undefined || firstName === null) {
-            this.badRequest("firstName is not set in request");
+            this.badRequest(`${Constants.FIRST_NAME} is not set in request`);
         }
-        const lastName = credentialsMap.get("lastName");
+        const lastName = credentialsMap.get(Constants.LAST_NAME);
         if (lastName === undefined || lastName === null) {
-            this.badRequest("lastName is not set in request");
+            this.badRequest(`${Constants.LAST_NAME} is not set in request`);
         }
-        const phoneNumber = credentialsMap.get("phone");
+        const phoneNumber = credentialsMap.get(Constants.PHONE);
         if (phoneNumber === undefined || phoneNumber === null) {
-            this.badRequest("phone is not set in request");
+            this.badRequest(`${Constants.PHONE} is not set in request`);
         }
 
         const testId = uuidv1();
