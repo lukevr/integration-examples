@@ -6,6 +6,10 @@ import {Server} from 'typescript-rest';
 import controllers from './controller';
 import { HttpError } from 'typescript-rest/dist/server/model/errors';
 import morgan = require('morgan');
+import { ConfigService } from './service/ConfigService';
+import { AppConfigHelper } from './config/AppConfig';
+import { Container } from 'typescript-ioc';
+import { MongoConnector } from './util/MongoConnector';
 
 export class ApiServer {
     public PORT: number = +process.env.PORT || 4011;
@@ -36,6 +40,10 @@ export class ApiServer {
      * @returns {Promise<any>}
      */
     public start(): Promise<any> {
+        const appConfig = AppConfigHelper.read("appConfig");
+        const configService = Container.get(ConfigService);
+        const mongoConnectors: MongoConnector = Container.get(MongoConnector);
+        configService.init(appConfig);
         return new Promise<any>((resolve, reject) => {
             this.server = this.app.listen(this.PORT, (err: any) => {
                 if (err) {
@@ -48,6 +56,8 @@ export class ApiServer {
 
                 return resolve();
             });
+        }).then(()=>{
+            mongoConnectors.connect();
         });
 
     }
@@ -65,6 +75,9 @@ export class ApiServer {
             } else {
                 return resolve(true);
             }
+        }).then(() => {
+            const connector = Container.get(MongoConnector);
+            return connector.disconnect().then(()=>true);
         });
     }
 
