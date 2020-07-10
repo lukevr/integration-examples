@@ -25,7 +25,8 @@ export class UbirchConnectService {
     const options: any = { };
     if (config.ubirchToken !== undefined ) {
       options.headers = {
-        'X-Auth-Token': config.ubirchToken
+        'X-Auth-Token': config.ubirchToken,
+        'Content-Type': "text/plain"
       };
     }
     let ubirchUrl = `${config.ubirchBaseUrl}/upp/verify/anchor`;
