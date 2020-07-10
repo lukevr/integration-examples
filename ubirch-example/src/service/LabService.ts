@@ -90,7 +90,7 @@ export class LabService {
         let isOk: boolean = false;
         try {
             const rq = await axios.post(
-                `${config.zakaContainerUrl}/service/${config.testServiceDid}/webhook-acce[t/credentials-issued`,
+                `${config.zakaContainerUrl}/service/${config.testServiceDid}/webhook-accept/credentials-issued`,
                 binaryBody,
                 {
                     headers: {
