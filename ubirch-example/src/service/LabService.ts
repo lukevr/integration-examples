@@ -109,8 +109,9 @@ export class LabService {
             console.log("expception during call to zaka", ex);
             throw new Errors.InternalServerError("Exception during call to zaka :"+ex);
         }
-
-        await testWaiter.remove();
+    
+        // TODO: uncomment me after end of testing
+        // await testWaiter.remove();
 
     }
 
