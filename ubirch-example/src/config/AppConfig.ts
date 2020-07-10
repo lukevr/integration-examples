@@ -50,7 +50,7 @@ export class AppConfigHelper {
             throw new Error("zakaContainerPublicKeyFile is not set in appConfig");
         }
         const zakaPem = fs.readFileSync(zakaContainerPublicKeyFile);
-        json.zakaPublicKey = crypto.createPublicKey({ key: zakaPem });
+        json.zakaContainerPublicKey = crypto.createPublicKey({ key: zakaPem });
         // TODO: insert checks
         return json;
     }
