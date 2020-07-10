@@ -25,7 +25,7 @@ export class UbirchConnectService {
     const options: any = { };
     if (config.ubirchToken !== undefined ) {
       options.headers = {
-        Authorization: config.ubirchToken
+        'X-Auth-Token': config.ubirchToken
       };
     }
     let ubirchUrl = `${config.ubirchBaseUrl}/upp/verify/anchor`;
@@ -61,7 +61,7 @@ export class UbirchConnectService {
         const config = this.configService.config();
         const options = {
             headers: { 
-              Authorization: config.ubirchToken,
+              'X-Auth-Token': config.ubirchToken,
               'Content-Type': 'text/plain'
             }
         };
