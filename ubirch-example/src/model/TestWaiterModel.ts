@@ -9,6 +9,7 @@ export interface TestWaiterRecord {
     firstName: string;
     lastName: string;
     phoneNumber: string;
+    sDateOfBirth: string;
     expirationDate: Date;
 }
 
@@ -19,6 +20,7 @@ const TestWaiterSchema = new mongoose.Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   phoneNumber: { type: String, required: true },
+  sDateOfBirth: { type: String, required: true },
   expirationDate: { type: Date }
  },{
   strict: false

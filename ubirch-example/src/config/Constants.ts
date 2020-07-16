@@ -10,5 +10,10 @@ export class Constants {
     public static PHONE: string = "Phone";
     public static EMAIL: string = "E-mail";
 
+    // we 
+    public static NONHASHED_FIELDS: Set<string> = new Set([
+         Constants.FIRST_NAME, Constants.LAST_NAME, Constants.DATE_OF_BIRTH,
+         Constants.PHONE, Constants.EMAIL
+    ]);
 
 }

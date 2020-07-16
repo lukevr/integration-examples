@@ -52,6 +52,11 @@ export class ActionHook {
             this.badRequest(`${Constants.PHONE} is not set in request`);
         }
 
+        const sDateOfBirth = credentialsMap.get(Constants.DATE_OF_BIRTH);
+        if (sDateOfBirth === undefined || sDateOfBirth === null) {
+            this.badRequest(`${Constants.DATE_OF_BIRTH} is not set in request`);
+        }
+
         const testId = uuidv1();
     
         let waiter = await TestWaiterModel.findByTestId(testId);
@@ -62,6 +67,7 @@ export class ActionHook {
                 firstName,
                 lastName,
                 phoneNumber,
+                sDateOfBirth,
                 expirationDate: DateUtil.plusDays(new Date(), 30)
             });
         }

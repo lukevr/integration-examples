@@ -47,7 +47,7 @@ export class LabService {
         const result = {
           "First name" : testWaiter.firstName,
           "Last name" : testWaiter.lastName,
-          "Date of birth": "",
+          "Date of birth": testWaiter.sDateOfBirth,
           "Test type" : "fake: "+ testId+":"+uuidv1(),
           "Test result" : "1",
           "Valid till" : "" + DateUtil.plusDays(new Date(), 30).toString(),
