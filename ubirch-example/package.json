@@ -22,7 +22,7 @@
     "@types/mongoose": "^5.7.30",
     "@types/mustache": "^4.0.1",
     "axios": "^0.19.2",
-    "bcrypt": "^3.0.7",
+    "bcrypt": "^5.0.0",
     "cors": "2.8.5",
     "dotenv": "8.0.0",
     "hjson": "^3.2.1",
